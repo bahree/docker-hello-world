@@ -1,21 +1,22 @@
 FROM busybox:latest
 
 # Import the environment variables from a file named .env
-# The .env file should be in the same directory as the Dockerfile
 COPY .env /tmp/.env
-
-# Use the ARG instruction to set the default port
-ARG DEFAULT_PORT=8000
+ENV PORT=8000
 
 # Load the environment variables from the .env file
 RUN export $(cat /tmp/.env | xargs) && \
-    # Use the value from the .env file or fallback to the default port
-    PORT=${PORT:-$DEFAULT_PORT} && \
     echo "PORT is set to ${PORT}"
 
 LABEL maintainer="Chris <c@crccheck.com>"
 
-ADD index.html /www/index.html
+# Add the shell script and template to generate the HTML content
+ADD generate_index.sh /generate_index.sh
+ADD index.html /www/index.html.template
+RUN chmod +x /generate_index.sh
+
+# Run the shell script to generate the HTML content
+RUN /generate_index.sh
 
 # Expose the port specified in the .env file
 EXPOSE ${PORT}
