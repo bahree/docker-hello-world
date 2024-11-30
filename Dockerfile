@@ -10,10 +10,12 @@ RUN export $(cat /tmp/.env | xargs) && \
 
 LABEL maintainer="Chris <c@crccheck.com>"
 
-# Add the shell script and template to generate the HTML content
-ADD generate_index.sh /generate_index.sh
-ADD index.html /www/index.html.template
+# Add the shell script to generate the HTML content
+COPY generate_index.sh /generate_index.sh
 RUN chmod +x /generate_index.sh
+
+# Add the HTML template
+COPY index.html /www/index.html.template
 
 # Run the shell script to generate the HTML content
 RUN /generate_index.sh
