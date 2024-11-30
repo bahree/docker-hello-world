@@ -13,7 +13,8 @@ LABEL maintainer="Chris <c@crccheck.com>"
 
 ADD index.html /www/index.html
 
-# EXPOSE $PORT
+# Expose the port specified in the .env file
+EXPOSE $PORT
 
 HEALTHCHECK CMD nc -z localhost $PORT
 
