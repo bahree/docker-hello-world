@@ -18,7 +18,7 @@ RUN chmod +x /generate_index.sh
 COPY index.html /www/index.html.template
 
 # Run the shell script to generate the HTML content
-RUN /generate_index.sh
+RUN sh /generate_index.sh
 
 # Expose the port specified in the .env file
 EXPOSE ${PORT}
