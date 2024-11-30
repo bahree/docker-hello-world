@@ -15,7 +15,7 @@ I made this initially because there were lots of scenarios where I wanted a Dock
 ### Starting a web server on port 80
 
 ```bash
-$ docker run -d --rm --name web-test -p 80:8000 amitbahree/hello-world
+$ docker run -d ---rm --name hello-world-test -p 9999:8000 amitbahree/hello-world 
 ```
 
 You can now interact with this as if it were a dumb web server:
