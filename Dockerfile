@@ -10,20 +10,17 @@ RUN export $(cat /tmp/.env | xargs) && \
 
 LABEL maintainer="Chris <c@crccheck.com>"
 
-# Add the shell script to generate the HTML content
-COPY generate_index.sh /generate_index.sh
-RUN chmod +x /generate_index.sh
-
 # Add the HTML template
 COPY index.html /www/index.html.template
 
-# Run the shell script to generate the HTML content
-RUN /bin/sh /generate_index.sh
+# Create a startup script to replace placeholders
+COPY startup.sh /startup.sh
+RUN chmod +x /startup.sh
 
 # Expose the port specified in the .env file
 EXPOSE ${PORT}
 
 HEALTHCHECK CMD nc -z localhost ${PORT}
 
-# Create a basic webserver and run it until the container is stopped
-CMD echo "httpd started" && trap "exit 0;" TERM INT; httpd -v -p ${PORT} -h /www -f & wait
+# Run the startup script and start the web server
+CMD /startup.sh && echo "httpd started" && trap "exit 0;" TERM INT; httpd -v -p ${PORT} -h /www -f & wait
