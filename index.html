@@ -1,15 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Server Info</title>
+    <title>Hello World</title>
 </head>
 <body>
-    <h1>Server Information</h1>
-    <p><strong>Hostname:</strong> <span id="hostname"></span></p>
-    <p><strong>IP Address:</strong> <span id="ip_address"></span></p>
-    <p><strong>Date and Time:</strong> <span id="date_time"></span></p>
-    <p><strong>Uptime:</strong> <span id="uptime"></span></p>
-    <p><strong>Server Details:</strong> <span id="server_details"></span></p>
+    <h2>Hello World</h2>
+    <p>This is a simple web page served by a container to test that things are working correctly.</p>
+    <p>Given you are reading this, shows that things are working correctly. :)</p>
     <pre>
                                           ##         .
                                     ## ## ##        ==
@@ -20,6 +17,12 @@
                                \      \       _,'
                                 `'--.._\..--''
     </pre>
+    <h3>Server Information</h3>
+    <p><strong>Hostname:</strong> <span id="hostname"></span></p>
+    <p><strong>IP Address:</strong> <span id="ip_address"></span></p>
+    <p><strong>Date and Time:</strong> <span id="date_time"></span></p>
+    <p><strong>Uptime:</strong> <span id="uptime"></span></p>
+    <p><strong>Server Details:</strong> <span id="server_details"></span></p>
 
     <script>
         fetch('/cgi-bin/serverinfo.sh')
