@@ -1,16 +1,37 @@
-<pre>
-Hello World
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Server Info</title>
+</head>
+<body>
+    <h1>Server Information</h1>
+    <p><strong>Hostname:</strong> <span id="hostname"></span></p>
+    <p><strong>IP Address:</strong> <span id="ip_address"></span></p>
+    <p><strong>Date and Time:</strong> <span id="date_time"></span></p>
+    <p><strong>Uptime:</strong> <span id="uptime"></span></p>
+    <p><strong>Server Details:</strong> <span id="server_details"></span></p>
+    <pre>
+                                          ##         .
+                                    ## ## ##        ==
+                                 ## ## ## ## ##    ===
+                              /""""""""""""""""\___/ ===
+                        ~~~ {~~ ~~~~ ~~~ ~~~~ ~~ ~ /  ===- ~~~
+                              \______ o          _,/
+                               \      \       _,'
+                                `'--.._\..--''
+    </pre>
 
-Host Name: ${HOSTNAME}
-IP Address: ${IP}
-Date and Time: ${DATE}
-
-                                       ##         .
-                                 ## ## ##        ==
-                              ## ## ## ## ##    ===
-                           /""""""""""""""""\___/ ===
-                      ~~~ {~~ ~~~~ ~~~ ~~~~ ~~ ~ /  ===- ~~~
-                           \______ o          _,/
-                            \      \       _,'
-                             `'--.._\..--''
-</pre>
+    <script>
+        fetch('/cgi-bin/serverinfo.sh')
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('hostname').textContent = data.hostname;
+                document.getElementById('ip_address').textContent = data.ip_address;
+                document.getElementById('date_time').textContent = data.date_time;
+                document.getElementById('uptime').textContent = data.uptime;
+                document.getElementById('server_details').textContent = data.server_details;
+            })
+            .catch(error => console.error('Error fetching server info:', error));
+    </script>
+</body>
+</html>

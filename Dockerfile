@@ -1,26 +1,18 @@
 FROM busybox:latest
 
-# Import the environment variables from a file named .env
-COPY .env /tmp/.env
+# Create directories for the website and CGI scripts
+RUN mkdir -p /www/cgi-bin
+
+# Copy the index.html file into the container
+COPY index.html /www/index.html
+
+# Copy the CGI script into the container
+COPY serverinfo.sh /www/cgi-bin/serverinfo.sh
+RUN chmod +x /www/cgi-bin/serverinfo.sh
+
+# Expose port 8000
 ENV PORT=8000
-
-# Load the environment variables from the .env file
-RUN export $(cat /tmp/.env | xargs) && \
-    echo "PORT is set to ${PORT}"
-
-LABEL maintainer="Chris <c@crccheck.com>"
-
-# Add the HTML template
-COPY index.html /www/index.html.template
-
-# Create a startup script to replace placeholders
-COPY startup.sh /startup.sh
-RUN chmod +x /startup.sh
-
-# Expose the port specified in the .env file
 EXPOSE ${PORT}
 
-HEALTHCHECK CMD nc -z localhost ${PORT}
-
-# Run the startup script and start the web server
-CMD ["/bin/sh", "-c", "/startup.sh && echo 'httpd started' && trap 'exit 0;' TERM INT; httpd -v -p ${PORT} -h /www -f & wait"]
+# Start the web server with CGI enabled
+CMD ["sh", "-c", "httpd -f -p ${PORT} -h /www -c cgi-bin"]

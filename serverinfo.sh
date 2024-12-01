@@ -1,0 +1,10 @@
+#!/bin/sh
+echo "Content-type: application/json"
+echo ""
+echo "{"
+echo "\"hostname\": \"$(hostname)\","
+echo "\"ip_address\": \"$(hostname -i)\","
+echo "\"date_time\": \"$(date)\","
+echo "\"uptime\": \"$(uptime)\","
+echo "\"server_details\": \"$(uname -a)\""
+echo "}"
