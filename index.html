@@ -35,6 +35,19 @@
         a.repo-link:hover {
             text-decoration: underline;
         }
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5px; /* Reduced from 10px to 5px */
+        }
+        .info-grid p {
+            margin: 5px 0; /* Added to reduce vertical spacing */
+            padding: 0;     /* Removed padding */
+        }
+        .info-grid strong {
+            display: inline-block;
+            width: 140px; /* Fixed width for labels to align */
+        }
     </style>
 </head>
 <body>
@@ -42,22 +55,29 @@
     <p>This is a simple web page served by a container to test that things are working correctly.</p>
     <p>Given you are reading this, shows that things are working correctly. :)</p>
     <pre>
-                                          ##         .
-                                    ## ## ##        ==
-                                 ## ## ## ## ##    ===
-                              /""""""""""""""""\___/ ===
-                        ~~~ {~~ ~~~~ ~~~ ~~~~ ~~ ~ /  ===- ~~~
-                              \______ o          _,/
-                               \      \       _,'
-                                `'--.._\..--''
+                                              ##         .
+                                        ## ## ##        ==
+                                     ## ## ## ## ##    ===
+                                  /""""""""""""""""\___/ ===
+                            ~~~ {~~ ~~~~ ~~~ ~~~~ ~~ ~ /  ===- ~~~
+                                  \______ o          _,/
+                                   \      \       _,'
+                                    `'--.._\..--''
     </pre>
     <div class="server-info">
         <h3>Server Information</h3>
-        <p><strong>Hostname:</strong> <span id="hostname"></span></p>
-        <p><strong>IP Address:</strong> <span id="ip_address"></span></p>
-        <p><strong>Date and Time:</strong> <span id="date_time"></span></p>
-        <p><strong>Uptime:</strong> <span id="uptime"></span></p>
-        <p><strong>Server Details:</strong> <span id="server_details"></span></p>
+        <div class="info-grid">
+            <p><strong>Hostname:</strong> <span id="hostname"></span></p>
+            <p><strong>IP Address:</strong> <span id="ip_address"></span></p>
+            <p><strong>Date and Time:</strong> <span id="date_time"></span></p>
+            <p><strong>Uptime:</strong> <span id="uptime"></span></p>
+            <p><strong>CPU Usage:</strong> <span id="cpu_usage"></span></p>
+            <p><strong>Memory Usage:</strong> <span id="memory_usage"></span></p>
+            <p><strong>Disk Usage:</strong> <span id="disk_usage"></span></p>
+            <p><strong>Network Interfaces:</strong> <span id="network_interfaces"></span></p>
+            <p><strong>Container ID:</strong> <span id="container_id"></span></p>
+            <p><strong>Server Details:</strong> <span id="server_details"></span></p>
+        </div>
     </div>
 
     <a class="repo-link" href="https://github.com/bahree/docker-hello-world" target="_blank">View on GitHub; by Amit Bahree</a>
@@ -70,6 +90,11 @@
                 document.getElementById('ip_address').textContent = data.ip_address;
                 document.getElementById('date_time').textContent = data.date_time;
                 document.getElementById('uptime').textContent = data.uptime;
+                document.getElementById('cpu_usage').textContent = data.cpu_usage;
+                document.getElementById('memory_usage').textContent = data.memory_usage;
+                document.getElementById('disk_usage').textContent = data.disk_usage;
+                document.getElementById('network_interfaces').textContent = data.network_interfaces;
+                document.getElementById('container_id').textContent = data.container_id;
                 document.getElementById('server_details').textContent = data.server_details;
             })
             .catch(error => console.error('Error fetching server info:', error));

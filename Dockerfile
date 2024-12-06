@@ -3,10 +3,10 @@ FROM busybox:latest
 # Create necessary directories
 RUN mkdir -p /www/cgi-bin
 
-# Copy the index.html file into the container
+# Copy the static HTML files into the container
 COPY index.html /www/index.html
 
-# Copy the CGI script into the container
+# Copy the CGI scripts into the container
 COPY serverinfo.sh /www/cgi-bin/serverinfo.sh
 RUN chmod +x /www/cgi-bin/serverinfo.sh
 
