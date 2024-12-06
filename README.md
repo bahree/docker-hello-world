@@ -9,7 +9,7 @@ amitbahree/hello-world          latest    de265d51837e    5 hours ago    4.28MB
 ```
 **Question:** What is a floppy disk? 🤔
 
-There is often a scenario where you neeed a simple web server to test things out and make sure everything is wired up OK. This image is a simple web server that listens on port 8000 and returns a simple HTML page and shows some server details. It is based on the [Busybox Linux](https://www.busybox.net/about.html/) image.
+There is often a scenario where you need a simple web server to test things out and make sure everything is wired up OK. This image is a simple web server that listens on port 8000 and returns a simple HTML page and shows some server details. It is based on the [Busybox Linux](https://www.busybox.net/about.html/) image.
 
 ## Sample Usage
 
@@ -31,7 +31,7 @@ You can also interact with this and browse to is using a browser or use `curl` t
 ```bash
 $ curl http://localhost:9999/cgi-bin/serverinfo.sh
 ```
-In the console, you should see something similart to the image below.
+In the console, you should see something similar to the image below.
 
 ![Hello World](./images/hello-world-curl.png)
 
