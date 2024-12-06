@@ -2,6 +2,40 @@
 <html>
 <head>
     <title>Hello World</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        h2, h3 {
+            color: #444;
+        }
+        pre {
+            background-color: #222;
+            color: #0f0;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        .server-info {
+            background-color: #fff;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        a.repo-link {
+            display: inline-block;
+            margin-top: 20px;
+            text-decoration: none;
+            color: #0366d6;
+        }
+        a.repo-link:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
     <h2>Hello World</h2>
@@ -17,12 +51,16 @@
                                \      \       _,'
                                 `'--.._\..--''
     </pre>
-    <h3>Server Information</h3>
-    <p><strong>Hostname:</strong> <span id="hostname"></span></p>
-    <p><strong>IP Address:</strong> <span id="ip_address"></span></p>
-    <p><strong>Date and Time:</strong> <span id="date_time"></span></p>
-    <p><strong>Uptime:</strong> <span id="uptime"></span></p>
-    <p><strong>Server Details:</strong> <span id="server_details"></span></p>
+    <div class="server-info">
+        <h3>Server Information</h3>
+        <p><strong>Hostname:</strong> <span id="hostname"></span></p>
+        <p><strong>IP Address:</strong> <span id="ip_address"></span></p>
+        <p><strong>Date and Time:</strong> <span id="date_time"></span></p>
+        <p><strong>Uptime:</strong> <span id="uptime"></span></p>
+        <p><strong>Server Details:</strong> <span id="server_details"></span></p>
+    </div>
+
+    <a class="repo-link" href="https://github.com/bahree/docker-hello-world" target="_blank">View on GitHub; by Amit Bahree</a>
 
     <script>
         fetch('/cgi-bin/serverinfo.sh')
