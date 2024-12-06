@@ -16,7 +16,7 @@ There is often a scenario where you neeed a simple web server to test things out
 ### Starting a web server on port 9999
 
 ```bash
-$ docker run -d --rm -p 9999:8000 amitbahree/hello-world 
+$ docker run -d --rm -p 9999:8000 amitbahree/hello-world
 ```
 The image below shows an example of what this would look like.
 
@@ -52,3 +52,7 @@ $ docker tag amitbahree/hello-world ghcr.io/amitbahree/hello-world:latest
 # Push the image
 $ docker push ghcr.io/amitbahree/hello-world:latest
 ```
+
+### Acknowledgments
+
+This project is a fork of Chri's [docker-hello-world](https://github.com/crccheck/docker-hello-world). Special thanks to Chris for their valuable work.
