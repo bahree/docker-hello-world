@@ -1,17 +1,20 @@
 #!/bin/sh
 
-# Log access details
-echo "Accessed serverinfo.sh at $(date) from IP: $(echo $REMOTE_ADDR || echo 'N/A')" >&2
-
-# Output CGI headers
-echo "Content-type: application/json"
+echo "Content-Type: application/json"
 echo ""
 
-# Generate server information in JSON format
+# Get server information
+HOSTNAME=$(cat /etc/hostname)
+IP_ADDRESS=$(wget -qO- http://ifconfig.me)
+DATE_TIME=$(date)
+UPTIME=$(uptime)
+SERVER_DETAILS=$(uname -a)
+
+# Create JSON response
 echo "{"
-echo "\"hostname\": \"$(hostname)\","
-echo "\"ip_address\": \"$(hostname -i)\","
-echo "\"date_time\": \"$(date)\","
-echo "\"uptime\": \"$(uptime)\","
-echo "\"server_details\": \"$(uname -a)\""
+echo "  \"hostname\": \"${HOSTNAME}\","
+echo "  \"ip_address\": \"${IP_ADDRESS}\","
+echo "  \"date_time\": \"${DATE_TIME}\","
+echo "  \"uptime\": \"${UPTIME}\","
+echo "  \"server_details\": \"${SERVER_DETAILS}\""
 echo "}"

@@ -1,6 +1,6 @@
 FROM busybox:latest
 
-# Create directories for the website and CGI scripts
+# Create necessary directories
 RUN mkdir -p /www/cgi-bin
 
 # Copy the index.html file into the container
