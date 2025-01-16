@@ -5,7 +5,7 @@ This is a simple Docker image that just gives HTTP responses on a configurable p
 ```bash
 $ docker images | grep hello-world
 REPOSITORY                      TAG       IMAGE ID        CREATED          VIRTUAL SIZE
-amitbahree/hello-world          latest    de265d51837e    5 hours ago    4.28MB
+amitbahree/hello-world          latest    de265d51837e    5 hours ago      4.28MB
 ```
 **Question:** What is a floppy disk? 🤔
 
