@@ -1,6 +1,6 @@
 # Hello World
 
-This is a simple Docker image that just gives HTTP responses on a configurable port. It's small enough (~4.2 mb) to fit on one floppy disk 💾!
+This is a simple Docker image that just gives HTTP responses on a configurable port. It's small enough (~4.2 mb) to fit on two floppy disks 💾!
 
 ```bash
 $ docker images | grep hello-world
