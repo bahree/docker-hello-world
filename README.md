@@ -35,6 +35,20 @@ In the console, you should see something similar to the image below.
 
 ![Hello World](./images/hello-world-curl.png)
 
+#### Docker Compose
+
+If you prefer a docker compose file, below is the equivalent example of the `docker run` command.
+
+```
+version: "3.8"
+
+services:
+  hello-world:
+    image: amitbahree/hello-world
+    ports:
+      - "9999:8000"
+    restart: unless-stopped
+```
 ### Building and Publishing to GitHub Registry
 
 To build and publish the image to GitHub Container Registry:
